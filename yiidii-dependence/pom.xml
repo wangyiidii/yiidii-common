@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.yiidii</groupId>
+    <artifactId>yiidii-dependence</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+
+        <spring.boot.version>2.6.7</spring.boot.version>
+        <yiidii.common.version>1.0.0</yiidii.common.version>
+
+        <lombok.version>1.18.16</lombok.version>
+        <hutool.version>5.8.0</hutool.version>
+        <fastjson.version>1.2.75</fastjson.version>
+        <swagger-annotations.version>1.5.21</swagger-annotations.version>
+        <transmittable.version>2.12.1</transmittable.version>
+        <redisson.starter.version>3.10.6</redisson.starter.version>
+        <mysql.version>8.0.22</mysql.version>
+        <mybatisplus.version>3.4.1</mybatisplus.version>
+        <transmittable.version>2.12.1</transmittable.version>
+        <jsoup.version>1.15.1</jsoup.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring-boot 依赖管理-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.yiidii</groupId>
+                <artifactId>yiidii-boot</artifactId>
+                <version>${yiidii.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.yiidii</groupId>
+                <artifactId>yiidii-web</artifactId>
+                <version>${yiidii.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.yiidii</groupId>
+                <artifactId>yiidii-log</artifactId>
+                <version>${yiidii.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.yiidii</groupId>
+                <artifactId>yiidii-redis</artifactId>
+                <version>${yiidii.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.yiidii</groupId>
+                <artifactId>yiidii-mybatis</artifactId>
+                <version>${yiidii.common.version}</version>
+            </dependency>
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!-- swagger注解 -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable.version}</version>
+            </dependency>
+            <!-- redisson -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.starter.version}</version>
+            </dependency>
+           <!-- mysql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!-- mybatis plus-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatisplus.version}</version>
+            </dependency>
+            <!-- transmittable -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable.version}</version>
+            </dependency>
+            <!-- jsoup -->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>

@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.yiidii.web.config.JacksonConfiguration,\
+  cn.yiidii.web.config.WebMvcConfiguration
+
