@@ -17,6 +17,7 @@
 
         <lombok.version>1.18.16</lombok.version>
         <hutool.version>5.8.0</hutool.version>
+        <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
         <fastjson.version>1.2.75</fastjson.version>
         <swagger-annotations.version>1.5.21</swagger-annotations.version>
         <transmittable.version>2.12.1</transmittable.version>
@@ -49,6 +50,12 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.yiidii</groupId>
+                <artifactId>yiidii-base</artifactId>
+                <version>${yiidii.common.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.yiidii</groupId>
@@ -91,11 +98,6 @@
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-annotations</artifactId>
                 <version>${swagger-annotations.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>transmittable-thread-local</artifactId>
-                <version>${transmittable.version}</version>
             </dependency>
             <!-- redisson -->
             <dependency>
