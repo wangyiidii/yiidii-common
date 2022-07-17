@@ -7,7 +7,6 @@ import cn.yiidii.web.exception.BizException;
 import cn.yiidii.web.exception.code.ExceptionCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -56,7 +55,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.OK)
     public R<?> bizException(BizException ex) {
         log.debug("BizException: {}", ex);
-        log.warn("BizException: {}");
+        log.warn("BizException: {}", ex);
         return R.failed(ex.getCode(), ex.getMessage());
     }
 
@@ -64,7 +63,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public R<?> noHandlerFoundException(NoHandlerFoundException ex) {
         log.debug("NoHandlerFoundException: {}", ex);
-        log.warn("NoHandlerFoundException: {}");
+        log.warn("NoHandlerFoundException: {}", ex);
         return R.failed(ExceptionCode.NOT_FOUND.getCode(), ExceptionCode.NOT_FOUND.getMsg());
     }
 
@@ -72,7 +71,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> httpMessageNotReadableException(HttpMessageNotReadableException ex) {
         log.debug("HttpMessageNotReadableException: {}", ex);
-        log.warn("HttpMessageNotReadableException: {}");
+        log.warn("HttpMessageNotReadableException: {}", ex);
         String message = ex.getMessage();
         if (StrUtil.containsAny(message, "Could not read document:")) {
             String msg = String.format("无法正确的解析json类型的参数：%s", StrUtil.subBetween(message, "Could not read document:", " at "));
@@ -85,7 +84,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> bindException(BindException ex) {
         log.debug("BindException: {}", ex);
-        log.warn("BindException: {}");
+        log.warn("BindException: {}", ex);
         try {
             String msg = Objects.requireNonNull(ex.getBindingResult().getFieldError()).getDefaultMessage();
             if (StrUtil.isNotEmpty(msg)) {
@@ -109,7 +108,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> methodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
         log.debug("MethodArgumentTypeMismatchException: {}", ex);
-        log.warn("MethodArgumentTypeMismatchException: {}");
+        log.warn("MethodArgumentTypeMismatchException: {}", ex);
         String msg = "参数：[" + ex.getName() + "]的传入值：[" + ex.getValue() +
                 "]与预期的字段类型：[" + Objects.requireNonNull(ex.getRequiredType()).getName() + "]不匹配";
         return R.failed(ExceptionCode.PARAM_EX.getCode(), msg);
@@ -119,7 +118,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> illegalStateException(IllegalStateException ex) {
         log.debug("IllegalStateException: {}", ex);
-        log.warn("IllegalStateException: {}");
+        log.warn("IllegalStateException: {}", ex);
         return R.failed(ExceptionCode.ILLEGAL_ARGUMENT_EX.getCode(), ExceptionCode.ILLEGAL_ARGUMENT_EX.getMsg());
     }
 
@@ -127,7 +126,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> missingServletRequestParameterException(MissingServletRequestParameterException ex) {
         log.debug("MissingServletRequestParameterException: {}", ex);
-        log.warn("MissingServletRequestParameterException: {}");
+        log.warn("MissingServletRequestParameterException: {}", ex);
         return R.failed(ExceptionCode.ILLEGAL_ARGUMENT_EX.getCode(), "缺少必须的[" + ex.getParameterType() + "]类型的参数[" + ex.getParameterName() + "]");
     }
 
@@ -135,7 +134,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public R<?> nullPointerException(NullPointerException ex) {
         log.debug("NullPointerException: {}", ex);
-        log.warn("NullPointerException: {}");
+        log.warn("NullPointerException: {}", ex);
         return R.failed(ExceptionCode.NULL_POINT_EX.getCode(), ExceptionCode.NULL_POINT_EX.getMsg());
     }
 
@@ -143,7 +142,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> illegalArgumentException(IllegalArgumentException ex) {
         log.debug("IllegalArgumentException: {}", ex);
-        log.warn("IllegalArgumentException: {}");
+        log.warn("IllegalArgumentException: {}", ex);
         return R.failed(ExceptionCode.ILLEGAL_ARGUMENT_EX.getCode(), ExceptionCode.ILLEGAL_ARGUMENT_EX.getMsg());
     }
 
@@ -151,7 +150,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> httpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException ex) {
         log.debug("HttpMediaTypeNotSupportedException: {}", ex);
-        log.warn("HttpMediaTypeNotSupportedException: {}");
+        log.warn("HttpMediaTypeNotSupportedException: {}", ex);
         MediaType contentType = ex.getContentType();
         if (contentType != null) {
             return R.failed(ExceptionCode.MEDIA_TYPE_EX.getCode(), "请求类型(Content-Type)[" + contentType.toString() + "] 与实际接口的请求类型不匹配");
@@ -163,7 +162,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> missingServletRequestPartException(MissingServletRequestPartException ex) {
         log.debug("MissingServletRequestPartException: {}", ex);
-        log.warn("MissingServletRequestPartException: {}");
+        log.warn("MissingServletRequestPartException: {}", ex);
         return R.failed(ExceptionCode.METHOD_NOT_ALLOWED.getCode(), ExceptionCode.REQUIRED_FILE_PARAM_EX.getMsg());
     }
 
@@ -171,7 +170,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> servletException(ServletException ex) {
         log.debug("ServletException: {}", ex);
-        log.warn("ServletException: {}");
+        log.warn("ServletException: {}", ex);
         String msg = "UT010016: Not a multi part request";
         if (msg.equalsIgnoreCase(ex.getMessage())) {
             return R.failed(ExceptionCode.REQUIRED_FILE_PARAM_EX.getCode(), ExceptionCode.REQUIRED_FILE_PARAM_EX.getMsg());
@@ -183,7 +182,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> multipartException(MultipartException ex) {
         log.debug("MultipartException: {}", ex);
-        log.warn("MultipartException: {}");
+        log.warn("MultipartException: {}", ex);
         return R.failed(ExceptionCode.REQUIRED_FILE_PARAM_EX.getCode(), ExceptionCode.REQUIRED_FILE_PARAM_EX.getMsg());
     }
 
@@ -194,7 +193,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> constraintViolationException(ConstraintViolationException ex) {
         log.debug("ConstraintViolationException: {}", ex);
-        log.warn("ConstraintViolationException: {}");
+        log.warn("ConstraintViolationException: {}", ex);
         Set<ConstraintViolation<?>> violations = ex.getConstraintViolations();
         String message = violations.stream().map(ConstraintViolation::getMessage).collect(Collectors.joining(";"));
 
@@ -208,7 +207,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> methodArgumentNotValidException(MethodArgumentNotValidException ex) {
         log.debug("MethodArgumentNotValidException: {}", ex);
-        log.warn("MethodArgumentNotValidException: {}");
+        log.warn("MethodArgumentNotValidException: {}", ex);
         return R.failed(ExceptionCode.BASE_VALID_PARAM.getCode(), Objects.requireNonNull(ex.getBindingResult().getFieldError()).getDefaultMessage());
     }
 
@@ -222,7 +221,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public R<?> otherExceptionHandler(Throwable ex) {
         log.debug("Exception: {}", ex);
-        log.warn("Exception: {}");
+        log.warn("Exception: {}", ex);
         if (ex.getCause() instanceof BizException) {
             return this.bizException((BizException) ex.getCause());
         }
@@ -233,7 +232,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.OK)
     public R<?> baseUncheckedException(BaseUncheckedException ex) {
         log.debug("BaseUncheckedException: {}", ex);
-        log.warn("BaseUncheckedException: {}");
+        log.warn("BaseUncheckedException: {}", ex);
         return R.failed(ex.getCode());
     }
 
@@ -245,7 +244,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public R<?> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
         log.debug("HttpRequestMethodNotSupportedException: {}", ex);
-        log.warn("HttpRequestMethodNotSupportedException: {}");
+        log.warn("HttpRequestMethodNotSupportedException: {}", ex);
         return R.failed(ExceptionCode.METHOD_NOT_ALLOWED.getCode(), ExceptionCode.METHOD_NOT_ALLOWED.getMsg());
     }
 
@@ -253,7 +252,7 @@ public abstract class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public R<?> sqlException(SQLException ex) {
         log.debug("SQLException: {}", ex);
-        log.warn("SQLException: {}");
+        log.warn("SQLException: {}", ex);
         return R.failed(ExceptionCode.SQL_EX.getCode(), ExceptionCode.SQL_EX.getMsg());
     }
 
