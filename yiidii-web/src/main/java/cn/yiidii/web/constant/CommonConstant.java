@@ -32,4 +32,8 @@ public interface CommonConstant {
     String NORM_DATE_PATTERN = "yyyy-MM-dd";
     String NORM_TIME_PATTERN = "HH:mm:ss";
 
+    String SA_LOGIN_USER_KEY = "login-user";
+    String UNKNOWN_ZH = "未知";
+    String UNKNOWN_EN = "Unknown";
+
 }

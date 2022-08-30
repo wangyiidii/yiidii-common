@@ -16,6 +16,7 @@
         <module>yiidii-redis</module>
         <module>yiidii-mybatis</module>
         <module>yiidii-base</module>
+        <module>yiidii-mail</module>
     </modules>
 
     <properties>

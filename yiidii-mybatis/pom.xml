@@ -13,10 +13,6 @@
     <dependencies>
         <dependency>
             <groupId>cn.yiidii</groupId>
-            <artifactId>yiidii-boot</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.yiidii</groupId>
             <artifactId>yiidii-base</artifactId>
         </dependency>
         <dependency>

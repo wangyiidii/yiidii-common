@@ -11,22 +11,22 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-
-        <spring.boot.version>2.6.7</spring.boot.version>
         <yiidii.common.version>1.0.0</yiidii.common.version>
 
+        <spring.boot.version>2.7.2</spring.boot.version>
         <lombok.version>1.18.16</lombok.version>
-        <hutool.version>5.8.0</hutool.version>
-        <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
-        <fastjson.version>1.2.75</fastjson.version>
-        <swagger-annotations.version>1.5.21</swagger-annotations.version>
-        <transmittable.version>2.12.1</transmittable.version>
-        <redisson.starter.version>3.10.6</redisson.starter.version>
-        <mysql.version>8.0.22</mysql.version>
-        <mybatisplus.version>3.4.1</mybatisplus.version>
-        <transmittable.version>2.12.1</transmittable.version>
-        <jsoup.version>1.15.1</jsoup.version>
 
+        <tlog.version>1.4.3</tlog.version>
+        <sa-token.version>1.30.0</sa-token.version>
+        <justauth.version>1.4.0</justauth.version>
+        <mybatisplus.version>3.5.2</mybatisplus.version>
+        <redisson.starter.version>3.17.5</redisson.starter.version>
+
+        <hutool.version>5.8.0</hutool.version>
+        <fastjson.version>1.2.75</fastjson.version>
+        <transmittable.version>2.12.1</transmittable.version>
+        <swagger-annotations.version>1.5.21</swagger-annotations.version>
+        <jsoup.version>1.15.1</jsoup.version>
     </properties>
 
     <dependencyManagement>
@@ -64,12 +64,17 @@
             </dependency>
             <dependency>
                 <groupId>cn.yiidii</groupId>
-                <artifactId>yiidii-web</artifactId>
+                <artifactId>yiidii-log</artifactId>
                 <version>${yiidii.common.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.yiidii</groupId>
-                <artifactId>yiidii-log</artifactId>
+                <artifactId>yiidii-mail</artifactId>
+                <version>${yiidii.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.yiidii</groupId>
+                <artifactId>yiidii-mybatis</artifactId>
                 <version>${yiidii.common.version}</version>
             </dependency>
             <dependency>
@@ -79,15 +84,17 @@
             </dependency>
             <dependency>
                 <groupId>cn.yiidii</groupId>
-                <artifactId>yiidii-mybatis</artifactId>
+                <artifactId>yiidii-web</artifactId>
                 <version>${yiidii.common.version}</version>
             </dependency>
+
             <!-- lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+            <!-- alibaba fastjson -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
@@ -105,18 +112,63 @@
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.starter.version}</version>
             </dependency>
-           <!-- mysql -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
+
             <!-- mybatis plus-->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatisplus.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatisplus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yomahub</groupId>
+                <artifactId>tlog-web-spring-boot-starter</artifactId>
+                <version>${tlog.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>dom4j</artifactId>
+                        <groupId>dom4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>commons-beanutils</artifactId>
+                        <groupId>commons-beanutils</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- sa-token-->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-aop</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <!-- Sa-Token 整合 jwt -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-jwt</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <!-- justauth -->
+            <dependency>
+                <groupId>com.xkcoding.justauth</groupId>
+                <artifactId>justauth-spring-boot-starter</artifactId>
+                <version>${justauth.version}</version>
+            </dependency>
+
             <!-- transmittable -->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -129,7 +181,6 @@
                 <artifactId>jsoup</artifactId>
                 <version>${jsoup.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
