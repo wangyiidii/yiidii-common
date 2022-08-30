@@ -1,9 +1,8 @@
 package cn.yiidii.mybatis.handler;
 
-import cn.yiidii.boot.context.ContextUtil;
-import cn.yiidii.mybatis.entity.Entity;
-import cn.yiidii.mybatis.entity.SuperEntity;
-import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import cn.yiidii.base.domain.entity.Entity;
+import cn.yiidii.base.domain.entity.SuperEntity;
+import cn.yiidii.base.util.ContextUtil;
 import org.apache.ibatis.reflection.MetaObject;
 
 import java.time.LocalDateTime;
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
  * @author YiiDii Wang
  * @create 2021-09-27 23:25
  */
-public class PigeonMetaObjectHandler implements MetaObjectHandler {
+public class MetaObjectHandler implements com.baomidou.mybatisplus.core.handlers.MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {

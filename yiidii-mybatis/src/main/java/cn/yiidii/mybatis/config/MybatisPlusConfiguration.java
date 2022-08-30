@@ -1,6 +1,6 @@
 package cn.yiidii.mybatis.config;
 
-import cn.yiidii.mybatis.handler.PigeonMetaObjectHandler;
+import cn.yiidii.mybatis.handler.MetaObjectHandler;
 import cn.yiidii.mybatis.interceptor.SqlLogInterceptor;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
@@ -30,9 +30,9 @@ public class MybatisPlusConfiguration {
      * 自动填充数据
      */
     @Bean
-    @ConditionalOnMissingBean(PigeonMetaObjectHandler.class)
-    public PigeonMetaObjectHandler mateMetaObjectHandler() {
-        return new PigeonMetaObjectHandler();
+    @ConditionalOnMissingBean(MetaObjectHandler.class)
+    public MetaObjectHandler mateMetaObjectHandler() {
+        return new MetaObjectHandler();
     }
 
     /**
