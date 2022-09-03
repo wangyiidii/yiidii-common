@@ -18,6 +18,10 @@
         </dependency>
         <dependency>
             <groupId>cn.yiidii</groupId>
+            <artifactId>yiidii-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.yiidii</groupId>
             <artifactId>yiidii-redis</artifactId>
         </dependency>
 

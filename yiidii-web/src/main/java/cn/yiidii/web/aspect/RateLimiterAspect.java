@@ -61,7 +61,9 @@ public class RateLimiterAspect {
         MethodSignature signature = (MethodSignature) point.getSignature();
         Method method = signature.getMethod();
         Class<?> targetClass = method.getDeclaringClass();
-        stringBuffer.append(targetClass.getName()).append("-").append(method.getName());
+        stringBuffer.append(targetClass.getName()).append("-")
+                .append(method.getName()).append("-")
+                .append(rateLimiter.time()).append("-").append(rateLimiter.count());
         return stringBuffer.toString();
     }
 }
