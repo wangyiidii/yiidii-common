@@ -25,6 +25,10 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 客户端工具类
@@ -169,6 +173,11 @@ public class ServletUtil extends cn.hutool.extra.servlet.ServletUtil {
         return URLDecoder.decode(str, StandardCharsets.UTF_8);
     }
 
+    /**
+     * 根据ip获取地址信息
+     *
+     * @return 地址信息
+     */
     public static String getLocation() {
         String clientIP = getClientIP();
         try {
@@ -185,8 +194,64 @@ public class ServletUtil extends cn.hutool.extra.servlet.ServletUtil {
         }
     }
 
+    /**
+     * 获取UA信息
+     *
+     * @return {@link UserAgent}
+     */
     public static UserAgent getUserAgent() {
         return UserAgentUtil.parse(getHeader(getRequest(), Header.USER_AGENT.getValue(), StandardCharsets.UTF_8));
+    }
+
+    /**
+     * 获取当前请求cookie字符串
+     *
+     * @return a=xxx; b=yyy
+     */
+    public static String getCookieStr() {
+        return Arrays.stream(getRequest().getCookies())
+                .map(e -> StrUtil.format("{}={}", e.getName(), e.getValue()))
+                .collect(Collectors.joining("; "));
+    }
+
+    /**
+     * 获取当前请求cookie指定key的值
+     *
+     * @param key key
+     * @return cookie值
+     */
+    public static String getCookieValue(String key) {
+        return Arrays.stream(getRequest().getCookies()).filter(e -> StrUtil.equals(key, e.getName())).map(e -> e.getValue()).findFirst().orElse("");
+    }
+
+    /**
+     * cookie字符串转map
+     *
+     * @param cookie cookie字符串
+     * @return cookie map
+     */
+    public static Map<String, String> getCookieMap(String cookie) {
+        if (StrUtil.isBlank(cookie)) {
+            return Collections.emptyMap();
+        }
+        return Arrays.stream(cookie.split(";"))
+                .filter(e -> StrUtil.isNotBlank(e) && e.contains("="))
+                .collect(Collectors.toMap(
+                        e -> StrUtil.split(e, "=", true, false).get(0),
+                        e -> StrUtil.split(e, "=", true, false).get(1),
+                        (e1, e2) -> e2
+                ));
+    }
+
+    /**
+     * 获取cookie的值
+     *
+     * @param cookie cookie
+     * @param key    key
+     * @return value
+     */
+    public static String getCookieValue(String cookie, String key) {
+        return getCookieMap(cookie).getOrDefault(key, "");
     }
 
 }
