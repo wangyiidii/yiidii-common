@@ -27,6 +27,7 @@
         <transmittable.version>2.12.1</transmittable.version>
         <swagger-annotations.version>1.5.21</swagger-annotations.version>
         <jsoup.version>1.15.1</jsoup.version>
+        <powerjob.version>4.1.1</powerjob.version>
     </properties>
 
     <dependencyManagement>
@@ -180,6 +181,12 @@
                 <groupId>org.jsoup</groupId>
                 <artifactId>jsoup</artifactId>
                 <version>${jsoup.version}</version>
+            </dependency>
+            <!-- powerjob -->
+            <dependency>
+                <groupId>tech.powerjob</groupId>
+                <artifactId>powerjob-worker-spring-boot-starter</artifactId>
+                <version>${powerjob.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
