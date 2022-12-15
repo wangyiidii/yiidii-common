@@ -8,14 +8,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * @author ed w
  * @since 1.0
  */
-public interface IEnum {
+public interface IEnum<T> {
     /**
      * 获取枚举码值
      * 序列化时采用改值
      * @return  code
      */
     @JsonValue
-    Integer code();
+    T code();
 
     /**
      * 获取枚举描述
