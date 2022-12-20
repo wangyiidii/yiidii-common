@@ -29,6 +29,7 @@
         <jsoup.version>1.15.1</jsoup.version>
         <powerjob.version>4.1.1</powerjob.version>
         <prometheus.version>1.10.0</prometheus.version>
+        <guava.version>31.1-jre</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -196,6 +197,14 @@
                 <artifactId>micrometer-registry-prometheus</artifactId>
                 <version>${prometheus.version}</version>
             </dependency>
+
+            <!-- guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
