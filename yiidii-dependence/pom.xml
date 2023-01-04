@@ -14,6 +14,8 @@
         <yiidii.common.version>1.0.0</yiidii.common.version>
 
         <spring.boot.version>2.7.2</spring.boot.version>
+        <spring.cloud.version>2021.0.4</spring.cloud.version>
+        <spring.cloud.alibaba.version>2021.0.4.0</spring.cloud.alibaba.version>
         <lombok.version>1.18.16</lombok.version>
 
         <tlog.version>1.4.3</tlog.version>
@@ -34,7 +36,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- spring-boot 依赖管理-->
+            <!-- SpringBoot 依赖管理-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -42,6 +44,24 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- SpringCloud 依赖管理-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- SpringCloud alibaba 依赖管理-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-bom</artifactId>
