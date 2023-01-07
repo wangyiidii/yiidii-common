@@ -1,6 +1,6 @@
-package cn.yiidii.web;
+package cn.yiidii.base;
 
-import cn.yiidii.web.constant.CommonConstant;
+import cn.yiidii.base.contant.CommonConstant;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;

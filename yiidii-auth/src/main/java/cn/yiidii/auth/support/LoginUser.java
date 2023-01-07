@@ -1,4 +1,4 @@
-package cn.yiidii.web.support;
+package cn.yiidii.auth.support;
 
 import cn.yiidii.base.annotation.Sensitive;
 import cn.yiidii.base.domain.enums.SensitiveStrategy;

@@ -10,7 +10,6 @@
     </parent>
     <artifactId>yiidii-web</artifactId>
 
-
     <dependencies>
         <dependency>
             <groupId>cn.yiidii</groupId>
@@ -66,21 +65,6 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
-        </dependency>
-
-        <!-- sa-token -->
-        <dependency>
-            <groupId>cn.dev33</groupId>
-            <artifactId>sa-token-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.dev33</groupId>
-            <artifactId>sa-token-spring-aop</artifactId>
-        </dependency>
-        <!-- Sa-Token 整合 jwt -->
-        <dependency>
-            <groupId>cn.dev33</groupId>
-            <artifactId>sa-token-jwt</artifactId>
         </dependency>
 
         <dependency>

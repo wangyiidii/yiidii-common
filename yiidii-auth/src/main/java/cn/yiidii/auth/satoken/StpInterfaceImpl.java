@@ -1,8 +1,8 @@
-package cn.yiidii.web.satoken;
+package cn.yiidii.auth.satoken;
 
 import cn.dev33.satoken.stp.StpInterface;
 import cn.hutool.json.JSONUtil;
-import cn.yiidii.web.support.LoginUser;
+import cn.yiidii.auth.support.LoginUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

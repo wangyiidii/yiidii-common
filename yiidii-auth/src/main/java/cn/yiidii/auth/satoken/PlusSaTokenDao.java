@@ -1,4 +1,4 @@
-package cn.yiidii.web.satoken;
+package cn.yiidii.auth.satoken;
 
 import cn.dev33.satoken.dao.SaTokenDao;
 import cn.dev33.satoken.util.SaFoxUtil;

@@ -1,9 +1,9 @@
-package cn.yiidii.web.support;
+package cn.yiidii.auth.support;
 
 import cn.dev33.satoken.strategy.SaStrategy;
+import cn.yiidii.auth.consts.PermissionConstant;
+import cn.yiidii.auth.satoken.LoginHelper;
 import cn.yiidii.base.core.service.SensitiveService;
-import cn.yiidii.web.constant.PermissionConstant;
-import cn.yiidii.web.satoken.LoginHelper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

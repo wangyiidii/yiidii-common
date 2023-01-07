@@ -1,11 +1,11 @@
 package cn.yiidii.web.config;
 
 import cn.hutool.core.util.StrUtil;
-import cn.yiidii.base.exception.RateLimitException;
-import cn.yiidii.base.exception.code.ExceptionCode;
-import cn.yiidii.web.R;
+import cn.yiidii.base.R;
 import cn.yiidii.base.exception.BaseUncheckedException;
 import cn.yiidii.base.exception.BizException;
+import cn.yiidii.base.exception.RateLimitException;
+import cn.yiidii.base.exception.code.ExceptionCode;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +43,6 @@ import java.util.stream.Collectors;
  * 全局异常统一处理
  *
  * @author zuihou
- * @date 2017-12-13 17:04
  */
 @Slf4j
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
@@ -176,7 +175,7 @@ public abstract class GlobalExceptionHandler {
         log.debug("请求地址: {}, 无效的Content-Type类型: {}", request.getRequestURI(), ex);
         MediaType contentType = ex.getContentType();
         if (contentType != null) {
-            return R.failed(ExceptionCode.PARAM_EX.getCode(), "请求类型(Content-Type)[" + contentType.toString() + "] 与实际接口的请求类型不匹配");
+            return R.failed(ExceptionCode.PARAM_EX.getCode(), "请求类型(Content-Type)[" + contentType + "] 与实际接口的请求类型不匹配");
         }
         return R.failed(ExceptionCode.PARAM_EX.getCode(), "无效的Content-Type类型");
     }
@@ -198,7 +197,7 @@ public abstract class GlobalExceptionHandler {
         if (msg.equalsIgnoreCase(ex.getMessage())) {
             return R.failed(ExceptionCode.REQUIRED_FILE_PARAM_EX.getCode(), ExceptionCode.REQUIRED_FILE_PARAM_EX.getMsg());
         }
-        return R.failed(ExceptionCode.PARAM_EX.getCode());
+        return R.failed(ExceptionCode.PARAM_EX.getCode(), ExceptionCode.PARAM_EX.getMsg());
     }
 
     /**
@@ -266,7 +265,7 @@ public abstract class GlobalExceptionHandler {
      * 其他异常
      *
      * @param ex 其他异常
-     * @return
+     * @return {@link R}
      */
     @ExceptionHandler(Throwable.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

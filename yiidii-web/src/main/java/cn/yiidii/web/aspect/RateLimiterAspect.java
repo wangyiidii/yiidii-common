@@ -4,8 +4,8 @@ import cn.yiidii.base.annotation.RateLimiter;
 import cn.yiidii.base.domain.enums.LimitType;
 import cn.yiidii.base.exception.RateLimitException;
 import cn.yiidii.base.exception.code.ExceptionCode;
+import cn.yiidii.base.util.ServletUtil;
 import cn.yiidii.redis.RedisUtils;
-import cn.yiidii.web.support.ServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -53,7 +53,7 @@ public class RateLimiterAspect {
         StringBuilder stringBuffer = new StringBuilder(rateLimiter.key());
         if (rateLimiter.limitType() == LimitType.IP) {
             // 获取请求ip
-            stringBuffer.append(ServletUtil.getClientIP()).append("-");
+            stringBuffer.append(ServletUtil.getClientIp()).append("-");
         } else if (rateLimiter.limitType() == LimitType.CLUSTER) {
             // 获取客户端实例id
             stringBuffer.append(RedisUtils.getClient().getId()).append("-");

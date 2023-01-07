@@ -1,4 +1,4 @@
-package cn.yiidii.web.config;
+package cn.yiidii.auth.config;
 
 import cn.dev33.satoken.jwt.StpLogicJwtForSimple;
 import cn.dev33.satoken.stp.StpLogic;

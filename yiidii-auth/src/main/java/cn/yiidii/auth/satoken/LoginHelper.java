@@ -1,14 +1,10 @@
-package cn.yiidii.web.satoken;
+package cn.yiidii.auth.satoken;
 
 import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.stp.SaLoginConfig;
 import cn.dev33.satoken.stp.StpUtil;
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.StrUtil;
-import cn.yiidii.web.constant.CommonConstant;
-import cn.yiidii.web.support.LoginUser;
-
-import java.util.List;
+import cn.yiidii.auth.support.LoginUser;
+import cn.yiidii.base.contant.CommonConstant;
 
 /**
  * LoginHelper

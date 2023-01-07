@@ -1,4 +1,4 @@
-package cn.yiidii.web.support;
+package cn.yiidii.base.util;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
@@ -10,7 +10,7 @@ import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import cn.yiidii.web.constant.CommonConstant;
+import cn.yiidii.base.contant.CommonConstant;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.http.MediaType;
@@ -18,6 +18,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -126,7 +127,7 @@ public class ServletUtil extends cn.hutool.extra.servlet.ServletUtil {
     /**
      * 是否是Ajax异步请求
      *
-     * @param request
+     * @param request {@link HttpServletRequest}
      */
     public static boolean isAjaxRequest(HttpServletRequest request) {
 
@@ -149,7 +150,7 @@ public class ServletUtil extends cn.hutool.extra.servlet.ServletUtil {
         return StrUtil.equalsAnyIgnoreCase(ajax, "json", "xml");
     }
 
-    public static String getClientIP() {
+    public static String getClientIp() {
         return getClientIP(getRequest());
     }
 
@@ -179,7 +180,7 @@ public class ServletUtil extends cn.hutool.extra.servlet.ServletUtil {
      * @return 地址信息
      */
     public static String getLocation() {
-        String clientIP = getClientIP();
+        String clientIP = getClientIp();
         try {
             HttpResponse resp = HttpRequest.get(StrUtil.format("https://ip.useragentinfo.com/json?ip={}", clientIP)).execute();
             JSONObject body = JSONUtil.parseObj(resp.body());
@@ -221,7 +222,7 @@ public class ServletUtil extends cn.hutool.extra.servlet.ServletUtil {
      * @return cookie值
      */
     public static String getCookieValue(String key) {
-        return Arrays.stream(getRequest().getCookies()).filter(e -> StrUtil.equals(key, e.getName())).map(e -> e.getValue()).findFirst().orElse("");
+        return Arrays.stream(getRequest().getCookies()).filter(e -> StrUtil.equals(key, e.getName())).map(Cookie::getValue).findFirst().orElse("");
     }
 
     /**
