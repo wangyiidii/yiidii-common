@@ -48,7 +48,7 @@ import java.util.stream.Collectors;
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @RestControllerAdvice
 @RequiredArgsConstructor
-public abstract class GlobalExceptionHandler {
+public class GlobalExceptionHandler {
 
     public final HttpServletRequest request;
 
