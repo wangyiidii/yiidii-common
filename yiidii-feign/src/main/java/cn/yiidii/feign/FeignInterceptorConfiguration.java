@@ -1,6 +1,7 @@
 package cn.yiidii.feign;
 
 import cn.hutool.core.util.StrUtil;
+import cn.yiidii.base.contant.HttpHeader;
 import feign.RequestInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,10 @@ public class FeignInterceptorConfiguration {
     @Bean
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> {
+            // inner-feign请求头忽略鉴权
+            requestTemplate.header(HttpHeader.INNER_FEIGN, "xxx");
+
+            // 传递cookie
             ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             String cookie = requestAttributes.getRequest().getHeader(HttpHeaders.COOKIE);
             if (StrUtil.isNotBlank(cookie)) {
