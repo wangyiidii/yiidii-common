@@ -1,6 +1,5 @@
 package cn.yiidii.boot.util;
 
-import cn.hutool.extra.spring.SpringUtil;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 /**

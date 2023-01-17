@@ -3,7 +3,7 @@ package cn.yiidii.auth.satoken;
 
 import cn.dev33.satoken.strategy.SaStrategy;
 import cn.hutool.core.util.StrUtil;
-import cn.yiidii.base.contant.HttpHeader;
+import cn.yiidii.base.contant.HttpConstant;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -36,7 +36,7 @@ public class SaCheckAspect {
 
     @Before("pointcut()")
     public void around(JoinPoint joinPoint) {
-        String inner = request.getHeader(HttpHeader.INNER_FEIGN);
+        String inner = request.getHeader(HttpConstant.InnerHeader.INNER_FEIGN);
         if (StrUtil.isNotBlank(inner)) {
             log.debug("内部接口调用，忽略鉴权");
             return;
