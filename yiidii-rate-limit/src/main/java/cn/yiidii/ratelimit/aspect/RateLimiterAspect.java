@@ -1,4 +1,4 @@
-package cn.yiidii.web.aspect;
+package cn.yiidii.ratelimit.aspect;
 
 import cn.yiidii.base.annotation.RateLimiter;
 import cn.yiidii.base.domain.enums.LimitType;

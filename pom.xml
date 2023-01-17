@@ -20,6 +20,7 @@
         <module>yiidii-cloud</module>
         <module>yiidii-feign</module>
         <module>yiidii-auth</module>
+        <module>yiidii-rate-limit</module>
     </modules>
 
     <properties>

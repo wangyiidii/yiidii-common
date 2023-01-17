@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>yiidii-common</artifactId>
+        <groupId>cn.yiidii</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>yiidii-rate-limit</artifactId>
+    <name>yiidii-rate-limit</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.yiidii</groupId>
+            <artifactId>yiidii-base</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.yiidii</groupId>
+            <artifactId>yiidii-redis</artifactId>
+        </dependency>
+    </dependencies>
+</project>
