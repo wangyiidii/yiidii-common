@@ -28,14 +28,17 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-http</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-json</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -52,10 +55,12 @@
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-annotation</artifactId>
+            <optional>true</optional>
         </dependency>
         <!-- transmittable -->
         <dependency>
