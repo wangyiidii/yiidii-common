@@ -83,6 +83,14 @@ public class GlobalExceptionHandler {
 
     // ############################## 4xx start ##############################
 
+    @ExceptionHandler(MultipartException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public R<?> httpMessageNotReadableException(MultipartException ex) {
+        log.error("请求地址: {}, MultipartException: {}", request.getRequestURI(), ex.getMessage());
+        log.debug("请求地址: {}, MultipartException: {}", request.getRequestURI(), ex);
+        return R.failed(ExceptionCode.REQUIRED_TOO_LARGE_EX.getCode(), ExceptionCode.REQUIRED_TOO_LARGE_EX.getMsg());
+    }
+
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> httpMessageNotReadableException(HttpMessageNotReadableException ex) {
@@ -180,7 +188,7 @@ public class GlobalExceptionHandler {
         return R.failed(ExceptionCode.PARAM_EX.getCode(), "无效的Content-Type类型");
     }
 
-    @ExceptionHandler({MissingServletRequestPartException.class, MultipartException.class})
+    @ExceptionHandler({MissingServletRequestPartException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<?> missingServletRequestPartException(MissingServletRequestPartException ex) {
         log.error("请求地址: {}, 请求中必须至少包含一个有效文件: {}", request.getRequestURI(), ex.getMessage());

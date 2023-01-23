@@ -11,6 +11,7 @@ public enum ExceptionCode implements BaseExceptionCode {
     SUCCESS(0, "成功"),
     PARAM_EX(400, "参数错误"),
     REQUIRED_FILE_PARAM_EX(400, "请求中必须至少包含一个有效文件"),
+    REQUIRED_TOO_LARGE_EX(400, "请求文件过大"),
     NOT_FOUND(404, "没有找到资源"),
     METHOD_NOT_ALLOWED(405, "不支持当前请求类型"),
     INTERNAL_SERVER_ERROR(500, "服务器内部错误，请稍后重试！"),
