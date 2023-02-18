@@ -1,10 +1,12 @@
 package cn.yiidii.web.config;
 
 import cn.yiidii.web.constant.CommonConstant;
+import cn.yiidii.web.interceptor.ContextInterceptor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.time.format.DateTimeFormatter;
@@ -40,4 +42,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         registrar.registerFormatters(registry);
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new ContextInterceptor());
+    }
 }

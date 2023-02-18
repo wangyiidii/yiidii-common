@@ -44,6 +44,10 @@ public class ContextUtil {
         return map;
     }
 
+    public static void clear() {
+        THREAD_LOCAL.remove();
+    }
+
     public static Long getUserId() {
         return get(ContextConstant.JWT_KEY_USER_ID, Long.class, 0L);
     }
