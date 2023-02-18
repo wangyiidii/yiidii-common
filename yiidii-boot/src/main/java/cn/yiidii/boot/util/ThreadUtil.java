@@ -1,5 +1,6 @@
 package cn.yiidii.boot.util;
 
+import cn.yiidii.boot.config.ThreadPoolConfig;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 /**
@@ -15,7 +16,7 @@ public class ThreadUtil {
      *
      * @see {@link cn.yiidii.boot.config.ThreadPoolConfig}
      */
-    private final static ThreadPoolTaskExecutor THREAD_POOL_TASK_EXECUTOR = SpringUtil.getBean("threadPoolTaskExecutor", ThreadPoolTaskExecutor.class);
+    private final static ThreadPoolTaskExecutor GLOBAL_ASYNC_EXECUTOR = SpringUtil.getBean(ThreadPoolConfig.GLOBAL_ASYNC_EXECUTOR, ThreadPoolTaskExecutor.class);
 
     /**
      * 异步执行任务
@@ -23,7 +24,7 @@ public class ThreadUtil {
      * @param runnable runnable
      */
     public static void execute(Runnable runnable) {
-        THREAD_POOL_TASK_EXECUTOR.execute(runnable);
+        GLOBAL_ASYNC_EXECUTOR.execute(runnable);
     }
 
 }

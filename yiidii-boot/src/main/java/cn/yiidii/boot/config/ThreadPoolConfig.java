@@ -1,5 +1,6 @@
 package cn.yiidii.boot.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -13,9 +14,13 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @author ed w
  * @since 1.0
  */
+@Slf4j
 @EnableAsync
 @Configuration
 public class ThreadPoolConfig {
+
+    public static final String GLOBAL_SCHEDULED_EXECUTOR = "globalScheduledExecutor";
+    public static final String GLOBAL_ASYNC_EXECUTOR = "globalAsyncExecutor";
 
     /**
      * CPU个数
@@ -37,15 +42,37 @@ public class ThreadPoolConfig {
      * 缓冲队列大小
      */
     private static final int QUEUE_CAPACITY = 128;
+    /**
+     * 线程池名前缀
+     */
+    private static final String SCHEDULED_EXECUTOR_NAME_PREFIX = "async-scheduledExecutor-%s";
+    private static final String ASYNC_EXECUTOR_NAME_PREFIX = "async-executor-%s";
 
-    @Bean("threadPoolTaskExecutor")
-    public ThreadPoolTaskExecutor threadPoolTaskExecutor() {
+    /**
+     * 定时任务线程池
+     */
+    @Bean(ThreadPoolConfig.GLOBAL_SCHEDULED_EXECUTOR)
+    public ThreadPoolTaskExecutor scheduledExecutor() {
+        return constructor(SCHEDULED_EXECUTOR_NAME_PREFIX);
+    }
+
+    /**
+     * 通用线程池
+     */
+    @Bean(ThreadPoolConfig.GLOBAL_ASYNC_EXECUTOR)
+    public ThreadPoolTaskExecutor asyncExecutor() {
+        return constructor(ASYNC_EXECUTOR_NAME_PREFIX);
+    }
+
+    private ThreadPoolTaskExecutor constructor(String scheduledExecutorNamePrefix) {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(CORE_POOL_SIZE);
         executor.setMaxPoolSize(MAX_POOL_SIZE);
         executor.setQueueCapacity(QUEUE_CAPACITY);
         executor.setKeepAliveSeconds(KEEP_ALIVE_TIME);
+        executor.setThreadNamePrefix(scheduledExecutorNamePrefix);
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        executor.initialize();
         return executor;
     }
 
