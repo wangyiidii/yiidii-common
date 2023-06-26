@@ -4,10 +4,13 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.file.FileNameUtil;
 import cn.hutool.core.text.StrPool;
 import cn.hutool.core.util.StrUtil;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import java.io.File;
-import java.io.InputStream;
+import java.io.IOException;
 import java.util.Objects;
+
 
 /**
  * 文件工具类
@@ -37,9 +40,15 @@ public class LabFileUtil {
      * @return File
      */
     public static File getFileFromClassPath(String filePath, String module, boolean override) {
+        String tmpDir = "";
+        int dirIndex = filePath.lastIndexOf(File.separator);
+        if (dirIndex > 0) {
+            tmpDir = filePath.substring(0, dirIndex);
+        }
+
         String dir = System.getProperty("user.dir")
                 .concat(StrUtil.isNotBlank(module) ? File.separator.concat(module) : "")
-                .concat(File.separator).concat(filePath.substring(0, filePath.lastIndexOf(File.separator)));
+                .concat(StrUtil.isNotBlank(tmpDir) ? File.separator.concat(module) : "");
         String fileName = FileNameUtil.getPrefix(filePath);
         String suffix = FileNameUtil.getSuffix(filePath);
 
@@ -60,12 +69,16 @@ public class LabFileUtil {
             return null;
         }
 
-        InputStream in = LabFileUtil.class.getResourceAsStream(filePath);
-        if (Objects.isNull(in)) {
+        Resource resource = new ClassPathResource(filePath);
+        if (Objects.isNull(resource)) {
             return null;
         }
 
-        FileUtil.writeFromStream(in, ret);
-        return ret;
+        try {
+            FileUtil.writeFromStream(resource.getInputStream(), ret);
+            return ret;
+        } catch (IOException e) {
+            return null;
+        }
     }
 }

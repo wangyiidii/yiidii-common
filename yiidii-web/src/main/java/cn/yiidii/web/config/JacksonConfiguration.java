@@ -2,6 +2,7 @@ package cn.yiidii.web.config;
 
 import cn.yiidii.web.constant.CommonConstant;
 import cn.yiidii.web.jackson.Java8TimeModule;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
@@ -10,7 +11,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import java.time.ZoneId;
@@ -39,6 +39,7 @@ public class JacksonConfiguration {
 			builder.simpleDateFormat(CommonConstant.NORM_DATETIME_PATTERN);
 			builder.serializerByType(Long.class, ToStringSerializer.instance);
 			builder.modules(new Java8TimeModule());
+			builder.featuresToEnable(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS);
 		};
 	}
 

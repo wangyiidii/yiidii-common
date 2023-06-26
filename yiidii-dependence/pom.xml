@@ -125,6 +125,11 @@
                 <artifactId>yiidii-feign</artifactId>
                 <version>${yiidii.common.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.yiidii</groupId>
+                <artifactId>yiidii-rate-limit</artifactId>
+                <version>${yiidii.common.version}</version>
+            </dependency>
 
             <!-- lombok -->
             <dependency>

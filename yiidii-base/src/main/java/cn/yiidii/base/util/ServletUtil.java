@@ -8,10 +8,9 @@ import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
-import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
 import cn.yiidii.base.contant.CommonConstant;
 import lombok.AccessLevel;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.context.request.RequestAttributes;
@@ -28,6 +27,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -182,14 +182,9 @@ public class ServletUtil extends cn.hutool.extra.servlet.ServletUtil {
     public static String getLocation() {
         String clientIP = getClientIp();
         try {
-            HttpResponse resp = HttpRequest.get(StrUtil.format("https://ip.useragentinfo.com/json?ip={}", clientIP)).execute();
-            JSONObject body = JSONUtil.parseObj(resp.body());
-            return StrUtil.format("{}{}{}{}",
-                    body.get("country"),
-                    body.get("province"),
-                    body.get("city"),
-                    body.get("area")
-            );
+            HttpResponse resp = HttpRequest.get(StrUtil.format("https://opendata.baidu.com/api.php?query={}&resource_id=6006", clientIP)).execute();
+            LocationResponseDTO locationResponseDTO = JsonUtils.parseObject(resp.body(), LocationResponseDTO.class);
+            return locationResponseDTO.getData().get(0).getLocation();
         } catch (Exception e) {
             return CommonConstant.UNKNOWN_ZH;
         }
@@ -255,4 +250,15 @@ public class ServletUtil extends cn.hutool.extra.servlet.ServletUtil {
         return getCookieMap(cookie).getOrDefault(key, "");
     }
 
+    @Data
+    private static class LocationResponseDTO {
+
+        private Integer status;
+        private List<Data> data;
+
+        @lombok.Data
+        private static class Data {
+            private String location;
+        }
+    }
 }
