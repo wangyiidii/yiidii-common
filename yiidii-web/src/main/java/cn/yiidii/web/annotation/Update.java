@@ -6,5 +6,6 @@ package cn.yiidii.web.annotation;
  * @author ed w
  * @since 1.0
  */
+@SuppressWarnings("unused")
 public @interface Update {
 }

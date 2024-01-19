@@ -1,6 +1,8 @@
 package cn.yiidii.boot.util;
 
 
+import lombok.Getter;
+import lombok.NonNull;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
@@ -10,35 +12,36 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Objects;
 
 @Component
+@SuppressWarnings({"unused", "unchecked"})
 public class SpringUtil implements BeanFactoryPostProcessor, ApplicationContextAware {
+
     private static ConfigurableListableBeanFactory beanFactory;
+
+    @Getter
     private static ApplicationContext applicationContext;
 
     public SpringUtil() {
     }
 
     @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+    public void postProcessBeanFactory(@NonNull ConfigurableListableBeanFactory beanFactory) throws BeansException {
         SpringUtil.beanFactory = beanFactory;
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) {
+    public void setApplicationContext(@Nullable ApplicationContext applicationContext) {
         SpringUtil.applicationContext = applicationContext;
     }
 
-    public static ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
-
     public static ListableBeanFactory getBeanFactory() {
-        return (ListableBeanFactory) (null == beanFactory ? applicationContext : beanFactory);
+        return null == beanFactory ? applicationContext : beanFactory;
     }
 
     public static ConfigurableListableBeanFactory getConfigurableBeanFactory() {

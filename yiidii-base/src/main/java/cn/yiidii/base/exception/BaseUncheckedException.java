@@ -5,8 +5,7 @@ import cn.yiidii.base.exception.code.BaseExceptionCode;
 /**
  * 非运行时异常基类，所有自定义非运行时异常继承该类
  *
- * @author YiiDii Wang
- * @date 2021/2/11 14:46:57
+ * @author ed w
  */
 public class BaseUncheckedException extends RuntimeException implements BaseException {
 

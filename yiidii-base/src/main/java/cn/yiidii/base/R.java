@@ -14,31 +14,29 @@ import java.io.Serializable;
  * @param <T>
  * @author lengleng
  */
+@Getter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
 @ApiModel("通用响应模型")
+@SuppressWarnings("unused")
 public class R<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Getter
     @Setter
     @ApiModelProperty(value = "状态码")
     private int code;
 
-    @Getter
     @Setter
     @ApiModelProperty(value = "信息")
     private String msg;
 
-    @Getter
     @Setter
     @ApiModelProperty(value = "返回数据")
     private T data;
 
-    @Getter
     @Setter
     @ApiModelProperty(value = "时间戳")
     private long timestamp;

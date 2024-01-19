@@ -17,8 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /**
  * mybatis plus配置
  *
- * @author YiiDii Wang
- * @create 2021-09-27 23:27
+ * @author ed w
  */
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Configuration

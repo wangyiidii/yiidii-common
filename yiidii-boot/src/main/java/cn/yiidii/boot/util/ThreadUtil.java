@@ -14,7 +14,7 @@ public class ThreadUtil {
     /**
      * 线程池
      *
-     * @see {@link cn.yiidii.boot.config.ThreadPoolConfig}
+     * @see ThreadPoolConfig
      */
     private final static ThreadPoolTaskExecutor GLOBAL_ASYNC_EXECUTOR = SpringUtil.getBean(ThreadPoolConfig.GLOBAL_ASYNC_EXECUTOR, ThreadPoolTaskExecutor.class);
 

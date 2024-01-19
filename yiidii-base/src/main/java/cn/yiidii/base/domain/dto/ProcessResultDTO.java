@@ -6,10 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * ProcessResultDTO
+ * process执行结果
  *
  * @author ed w
- * @date 2022/9/29 9:15
  */
 @Data
 @Accessors(chain = true)

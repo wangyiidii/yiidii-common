@@ -3,9 +3,9 @@ package cn.yiidii.base.exception;
 /**
  * 运行时异常基类
  *
- * @author YiiDii Wang
- * @date 2021/2/11 14:46:20
+ * @author ed w
  */
+@SuppressWarnings("unused")
 public abstract class BaseCheckedException extends Exception implements BaseException {
 
     private static final long serialVersionUID = 2706069899924648586L;
@@ -13,12 +13,12 @@ public abstract class BaseCheckedException extends Exception implements BaseExce
     /**
      * 异常信息
      */
-    private String message;
+    private final String message;
 
     /**
      * 具体异常码
      */
-    private int code;
+    private final int code;
 
     public BaseCheckedException(final int code, final String message) {
         super(message);

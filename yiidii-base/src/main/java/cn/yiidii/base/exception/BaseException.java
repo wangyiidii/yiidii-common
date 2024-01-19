@@ -3,14 +3,9 @@ package cn.yiidii.base.exception;
 /**
  * 异常接口类
  *
- * @author YiiDii Wang
- * @create 2021-02-11 14:43
+ * @author ed w
  */
 public interface BaseException {
-    /**
-     * 统一参数验证异常码
-     */
-    int BASE_VALID_PARAM = -9;
 
     /**
      * 返回异常信息

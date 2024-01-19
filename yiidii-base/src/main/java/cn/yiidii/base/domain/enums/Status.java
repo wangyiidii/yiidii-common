@@ -13,14 +13,14 @@ import java.util.stream.Stream;
 /**
  * 通用状态枚举
  *
- * @author YiiDii Wang
+ * @author ed w
  * @since 1.0
  */
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(value = "Status", description = "通用状态枚举")
-public enum Status implements IEnum {
+public enum Status implements IEnum<Integer> {
 
     /**
      * 可用

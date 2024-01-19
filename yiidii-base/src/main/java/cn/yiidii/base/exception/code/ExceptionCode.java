@@ -2,9 +2,11 @@ package cn.yiidii.base.exception.code;
 
 
 /**
- * @author YiiDii Wang
- * @date 2021/2/11 14:48:24
+ * 状态码
+ *
+ * @author ed w
  */
+@SuppressWarnings("unused")
 public enum ExceptionCode implements BaseExceptionCode {
 
     // 系统相关

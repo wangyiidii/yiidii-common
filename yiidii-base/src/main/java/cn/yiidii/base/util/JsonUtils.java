@@ -20,6 +20,7 @@ import java.util.List;
  *
  * @author 芋道源码
  */
+@SuppressWarnings("unused")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JsonUtils {
 

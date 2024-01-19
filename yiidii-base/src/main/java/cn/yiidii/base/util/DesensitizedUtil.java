@@ -8,6 +8,7 @@ import cn.hutool.core.util.StrUtil;
  * @author ed w
  * @since 1.0
  */
+@SuppressWarnings("unused")
 public class DesensitizedUtil extends cn.hutool.core.util.DesensitizedUtil {
 
     /**
@@ -15,7 +16,6 @@ public class DesensitizedUtil extends cn.hutool.core.util.DesensitizedUtil {
      *
      * @param ipaddr    ip地址
      * @param pos       只支持1,2,3,4
-     * @return
      */
     public static String ipaddr(String ipaddr, int... pos) {
         if (StrUtil.isBlank(ipaddr)) {

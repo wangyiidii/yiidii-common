@@ -36,6 +36,7 @@ import java.util.stream.Collectors;
  *
  * @author ruoyi
  */
+@SuppressWarnings("unused")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ServletUtil extends cn.hutool.extra.servlet.ServletUtil {
 

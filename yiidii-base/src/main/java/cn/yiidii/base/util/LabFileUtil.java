@@ -9,7 +9,6 @@ import org.springframework.core.io.Resource;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 
 
 /**
@@ -18,6 +17,7 @@ import java.util.Objects;
  * @author ed w
  * @since 1.0
  */
+@SuppressWarnings("unused")
 public class LabFileUtil {
 
     /**
@@ -70,9 +70,6 @@ public class LabFileUtil {
         }
 
         Resource resource = new ClassPathResource(filePath);
-        if (Objects.isNull(resource)) {
-            return null;
-        }
 
         try {
             FileUtil.writeFromStream(resource.getInputStream(), ret);

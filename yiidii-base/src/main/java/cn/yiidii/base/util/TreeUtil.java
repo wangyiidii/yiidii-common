@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 /**
  * 树工具类
  *
- * @author YiiDii Wang
- * @create 2021-03-06 22:33
+ * @author ed w
  */
 @UtilityClass
+@SuppressWarnings("unused")
 public final class TreeUtil {
 
     /**
@@ -25,7 +25,7 @@ public final class TreeUtil {
      * @return 树结构
      */
     public static <E extends TreeEntity<E, ? extends Serializable>> List<E> buildTree(List<E> treeList) {
-        if (Objects.isNull(treeList) || treeList.size() == 0) {
+        if (Objects.isNull(treeList) || treeList.isEmpty()) {
             return treeList;
         }
         //记录自己是自己的父节点的id集合

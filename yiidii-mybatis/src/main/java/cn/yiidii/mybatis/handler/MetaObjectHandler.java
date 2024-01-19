@@ -10,8 +10,7 @@ import java.time.LocalDateTime;
 /**
  * 自动填充时间字段
  *
- * @author YiiDii Wang
- * @create 2021-09-27 23:25
+ * @author ed w
  */
 public class MetaObjectHandler implements com.baomidou.mybatisplus.core.handlers.MetaObjectHandler {
 

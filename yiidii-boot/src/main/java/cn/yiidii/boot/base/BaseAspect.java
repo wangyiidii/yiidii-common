@@ -15,11 +15,6 @@ public abstract class BaseAspect {
 
     /**
      * 获取切面方法上包含的指定注解
-     *
-     * @param joinPoint
-     * @param annotationClass
-     * @param <T>
-     * @return
      */
     public <T extends Annotation> T getAnnotation(JoinPoint joinPoint, Class<T> annotationClass) {
         String methodName = joinPoint.getSignature().getName();

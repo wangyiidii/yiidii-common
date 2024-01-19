@@ -11,11 +11,12 @@ import lombok.Getter;
  * @author zuihou
  * @version 1.0
  */
+@Getter
+@SuppressWarnings("unused")
 public class BizException extends BaseUncheckedException {
 
     private static final long serialVersionUID = -3843907364558373817L;
 
-    @Getter
     private Object data;
 
     public BizException(Throwable cause) {

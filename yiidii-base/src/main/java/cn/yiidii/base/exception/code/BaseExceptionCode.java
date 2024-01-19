@@ -1,10 +1,9 @@
 package cn.yiidii.base.exception.code;
 
 /**
- *  异常编码
- * 
- * @author YiiDii Wang
- * @date 2021/2/11 14:48:10
+ * 异常编码
+ *
+ * @author ed w
  */
 public interface BaseExceptionCode {
     /**
