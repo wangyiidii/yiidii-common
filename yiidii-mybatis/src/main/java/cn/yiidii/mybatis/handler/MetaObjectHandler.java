@@ -33,7 +33,7 @@ public class MetaObjectHandler implements com.baomidou.mybatisplus.core.handlers
                 this.setFieldValByName(Entity.CREATE_TIME, LocalDateTime.now(), metaObject);
             }
             if (entity.getCreatedBy() == null || entity.getCreatedBy().equals(0)) {
-                this.setFieldValByName(Entity.CREATED_BY, ContextUtil.getUserId(), metaObject);
+                this.setFieldValByName(Entity.CREATED_BY, ContextUtil.getUserId(Number.class), metaObject);
             }
         }
     }
@@ -43,7 +43,7 @@ public class MetaObjectHandler implements com.baomidou.mybatisplus.core.handlers
         if (metaObject.getOriginalObject() instanceof Entity) {
             Entity entity = (Entity) metaObject.getOriginalObject();
             if (entity.getUpdatedBy() == null || entity.getUpdatedBy().equals(0)) {
-                this.setFieldValByName(Entity.UPDATED_BY, ContextUtil.getUserId(), metaObject);
+                this.setFieldValByName(Entity.UPDATED_BY, ContextUtil.getUserId(Number.class), metaObject);
             }
             if (entity.getUpdateTime() == null) {
                 this.setFieldValByName(Entity.UPDATE_TIME, LocalDateTime.now(), metaObject);
