@@ -48,24 +48,18 @@ public class ContextUtil {
         THREAD_LOCAL.remove();
     }
 
-    public static Long getUserId() {
-        return get(ContextConstant.JWT_KEY_USER_ID, Long.class, 0L);
+    public static <T> T getUserId(Class<T> type) {
+        return get(ContextConstant.JWT_KEY_USER_ID, type, 0L);
     }
 
-    public static String getUserIdStr() {
-        return String.valueOf(getUserId());
-    }
 
     /**
      * 用户ID
      *
      * @param userId 用户ID
      */
-    public static void setUserId(Long userId) {
+    public static void setUserId(Number userId) {
         set(ContextConstant.JWT_KEY_USER_ID, userId);
     }
 
-    public static void setUserId(String userId) {
-        set(ContextConstant.JWT_KEY_USER_ID, userId);
-    }
 }
